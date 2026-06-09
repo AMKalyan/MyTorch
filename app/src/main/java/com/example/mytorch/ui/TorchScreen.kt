@@ -24,6 +24,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.ui.res.painterResource
+import com.example.mytorch.R
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -63,6 +65,17 @@ fun TorchScreen(
             verticalArrangement = Arrangement.Center
         ) {
             
+            // Title
+            Text(
+                text = "MyTorch",
+                color = TorchAmber,
+                fontSize = 36.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 2.sp
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
             // Status Text
             val statusColor by animateColorAsState(
                 targetValue = if (isTorchOn) TorchAmber else OnSurfaceDim,
@@ -115,10 +128,11 @@ fun TorchScreen(
                         TorchManager.toggle()
                     }
             ) {
-                Text(
-                    text = "⏻",
-                    color = iconColor,
-                    fontSize = 64.sp
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_flashlight),
+                    contentDescription = "Toggle Torch",
+                    tint = iconColor,
+                    modifier = Modifier.size(64.dp)
                 )
             }
 
